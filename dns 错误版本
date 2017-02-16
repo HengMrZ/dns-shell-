@@ -1,0 +1,15 @@
+#!/bin/bash
+
+a=0;
+j=0;
+status=`dig +short zengheng.com`
+for i in {1..10};do
+if [ ! $status ];then
+ let a++;
+else
+ let j++;
+fi;
+done;
+echo "success $j,fail $a";
+
+#这个不好用，当时写的时候没考虑解析出来有俩ip，只能用一台服务器的检测。
