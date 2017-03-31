@@ -1,0 +1,10 @@
+sshpass -p "Passwd" ssh $1 "echo DNS1=1.1.1.1 >>/etc/sysconfig/network-scripts/ifcfg-eth0"
+
+
+for i in `cat iplist`
+do
+	echo $i
+ 	sshpass -p "Passwd" ssh $i "ntpq -p"
+done
+
+
