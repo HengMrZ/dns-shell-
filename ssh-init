@@ -1,0 +1,10 @@
+#!/bin/bash
+ssh-keygen -R $1
+ssh-keygen -R `host $1 | awk '{print $NF}'`
+pswd=${2-"Passwd"}
+sed -i "/$1/d" /root/.ssh/known_hosts
+expect -c " set timeout 30
+  eval spawn ssh-copy-id $1
+  expect \"assword:\"
+  send \"$pswd\r\"
+  interact"
