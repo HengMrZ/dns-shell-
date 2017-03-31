@@ -1,0 +1,7 @@
+前提条件：每个文件中不得有重复行
+1. 取出两个文件的并集(重复的行只保留一份)
+2. 取出两个文件的交集(只留下同时存在于两个文件中的文件)
+3. 删除交集，留下其他的行
+1. cat file1 file2 | sort | uniq > file3
+2. cat file1 file2 | sort | uniq -d > file3
+3. cat file1 file2 | sort | uniq -u > file3
