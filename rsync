@@ -1,0 +1,1 @@
+rsync -av --bwlimit=5000 --progress --inplace --rsh='ssh -p 22' ./file root@ip:/your/path/>> /home/zengheng/log1 &
