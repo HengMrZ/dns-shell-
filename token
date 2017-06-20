@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+import onetimepass as otp
+import clipboard, sys, os
+import platform
+
+secret = {
+    "office" : "xxx",
+    "aliyun" : "xxx",
+    "hwd" : "ssss",
+    "hwds" : "xxxxx",
+    "hwm" : "xxxxx",
+    "gdd" : "xxxxxx",
+}
+
+if __name__ == "__main__":
+    # if len(sys.argv) < 2:
+    #     key_type = "office"
+    # else:
+    #     key_type = sys.argv[1]
+    #key_type = input("Please Input Your key_type: ")
+    key_type = "office"  
+    #print secret["office"];
+    if key_type in secret.keys():
+        my_secret = secret[key_type]
+    else:
+        print("can not find secret.")
+
+    my_token = "%06d" % otp.get_totp(my_secret)
+    
+    clipboard.copy(my_token)
+
+    os_type = platform.system()
+    if os_type == "Darwin":
+        os.system("osascript -e 'display notification \"%s\" with title \"%s TOKEN\"'" % (my_token, key_type.upper()))
+    print(my_token)
