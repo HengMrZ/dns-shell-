@@ -2,3 +2,4 @@ cat packets | grep A?|awk '{ print $(NF-1) }'|sed -e 's/\(.*\)./\1/'|uniq
 
 cat packets | awk '{print $3}'  | awk -F . '{print $1"."$2}'| sort | uniq -c
 
+cat xianchang  | awk '{print $3}' |  awk -F. 'OFS="."{$NF="";print}'|sed 's/.$//g'  |sort | uniq -c | sort -n |  tail -n 5
