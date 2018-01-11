@@ -3,3 +3,16 @@ do
     dig +short 域名 | grep ip >> result;
     sleep 2
 done;
+
+
+
+
+
+
+#!/bin/bash
+while :
+do
+echo `date` >> dnslog
+dig +short c3-hadoop-srv-st895.bj >> dnslog
+sleep 0.5
+done
