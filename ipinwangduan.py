@@ -1,3 +1,4 @@
+#判断ip地址在不在网段内。
 #coding:utf-8
 import sys
 from IPy import IP
